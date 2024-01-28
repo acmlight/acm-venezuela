@@ -1,0 +1,163 @@
+[33mcommit ddb40806822b56154827666c43dec1a7a92d7b37[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Fri Sep 8 18:46:41 2023 +0200
+
+    Fixing catpcha bug
+
+[33mcommit f4918d5cab951f677db73de1fbe7323a4d4a3068[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Fri Sep 8 16:39:45 2023 +0200
+
+    Fixing Google Recaptcha performance
+
+[33mcommit 2d6950bd68f3c785c51b1ce49ee4f8aeea129e42[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Fri Sep 8 15:14:29 2023 +0200
+
+    Correcciones y cambio de imágenes
+
+[33mcommit ee2f866f80a537dbdbf9c2a8ee27b9a320135350[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Mon Sep 4 13:41:42 2023 +0200
+
+    ContactForm, ContactMap and Contact email func
+
+[33mcommit a68951e9585359817787319aa20f5c45683e3fef[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Fri Sep 1 11:04:44 2023 +0200
+
+    Email Func, Refactor Product id page & Product History
+
+[33mcommit df5b3103a0af12b2743b65d77ffe12bd4fc096e3[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Tue Aug 29 13:42:25 2023 +0200
+
+    Carrito, Zustand, arreglos de estilos e imagenes
+
+[33mcommit a662dc8d1b7ddae8b42a5a18b343e66e0b27a9a8[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Thu Aug 24 15:11:22 2023 +0200
+
+    Cambio de tamaño de fuente modal segun tamano de pantalla
+
+[33mcommit 8e9b34deca35e4543ad01e628d110ff9991278f3[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Thu Aug 24 14:54:59 2023 +0200
+
+    Navbar, Client, Services and Page Transitions
+
+[33mcommit 3693bb41b65cd91ce234701f40ad4f5524afc271[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Thu Aug 17 18:16:00 2023 +0200
+
+    Product View, Navbar update
+
+[33mcommit d003bcc9025dd41b493a34bcd6f00d9f870c0a0b[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Sun Aug 13 16:32:33 2023 +0200
+
+    Ton of updates
+
+[33mcommit d094d4e2ae09e356f262985f7d955187acb714cc[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Fri Jul 28 18:23:37 2023 +0200
+
+    Clients, services and footer components
+
+[33mcommit 5d4efb9c10dc4f400ebe1da1414ffa0e6a28ed25[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Tue Jul 25 22:50:15 2023 +0200
+
+    Add services section and button menu products
+
+[33mcommit a7a65a6e95f17eee48ee7c2a1a04eca0a1ed5bc9[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Wed Jul 19 20:40:27 2023 +0200
+
+    Deleted api for firebase-next-auth
+
+[33mcommit 496433722a5d049a3167faf05695e4715575f065[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Wed Jul 19 20:31:32 2023 +0200
+
+    Add about, products and fixed Login functionality
+
+[33mcommit 5bfc1ac205d9d962702f8eb985e909616e731e1b[m
+Merge: 86b0000 cfb414b
+Author: Murga <juanmurga97@gmail.com>
+Date:   Mon Jul 17 19:31:09 2023 +0200
+
+    Merge branch 'main' of https://github.com/jmurga97/acm-venezuela
+
+[33mcommit 86b0000ba04904677522c4e09ced7e1fc15737a4[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Mon Jul 17 19:31:06 2023 +0200
+
+    Fixing next-firebase-auth
+
+[33mcommit cfb414b1ffc9e1e292acd20844cd41c9592dab30[m
+Author: Juan Murga <juanmurga97@gmail.com>
+Date:   Mon Jul 17 18:51:01 2023 +0200
+
+    Update initAuth.js
+    
+    Undo Prueba
+
+[33mcommit 480ddd57b42f03780c151d9d357613be96eb75fb[m
+Author: Juan Murga <juanmurga97@gmail.com>
+Date:   Mon Jul 17 18:47:55 2023 +0200
+
+    Update initAuth.js
+    
+    Prueba
+
+[33mcommit 15fc53f1628dc934484accb74e3f0cd7217da8ff[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Mon Jul 17 18:14:12 2023 +0200
+
+    Fixing pnpm peer dependencies again
+
+[33mcommit 0e3bd02b0a80fb4b4da79ee4aa02a1935d6d9fdc[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Mon Jul 17 18:08:14 2023 +0200
+
+    Fix npm peer dependencies
+
+[33mcommit 41d591aaa69cbed71109a454d1e86723c2f217cc[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Mon Jul 17 17:53:00 2023 +0200
+
+    Add banners at start, login functionality and nav fixed behavior
+
+[33mcommit caff2bb02d8ccd6f1077f32903a23245c9708c23[m
+Merge: dfd0f34 f332609
+Author: Murga <juanmurga97@gmail.com>
+Date:   Mon Jul 10 19:48:52 2023 +0200
+
+    Login functionality
+
+[33mcommit dfd0f348e0d8bef5ea017f7f92f6a7997dca9c2b[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Mon Jul 10 19:44:18 2023 +0200
+
+    Added Login page, Next-firebase-auth conf and Login functionality
+
+[33mcommit f332609f1944a3fca252bb254ec7fe2fafea3077[m
+Author: Juan Murga <juanmurga97@gmail.com>
+Date:   Wed Jul 5 12:21:41 2023 +0200
+
+    Delete pnpm-lock.yalm
+    
+    Debido a errores al hacer deploy en netlify.
+
+[33mcommit 505e1e64f6e02a562fbeb25c9423cd213a97f41f[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Wed Jul 5 11:46:22 2023 +0200
+
+    Setting proyect / Navbar component
+
+[33mcommit fe51df6354663c47c6bfb53d7647f89fcf536099[m
+Author: Murga <juanmurga97@gmail.com>
+Date:   Tue Jul 4 11:25:51 2023 +0200
+
+    Initial commit from Create Next App

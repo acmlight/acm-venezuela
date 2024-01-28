@@ -1,0 +1,103 @@
+.navBar{
+    color: #b0d236;
+    width: 100%;
+    position: absolute;
+    padding: 30px 50px;
+    height: 180px;
+    z-index: 2;
+}
+
+.navBarFixed{
+    position: fixed;
+    top: 0;
+    backdrop-filter: blur(13px) saturate(180%);
+    -webkit-backdrop-filter: blur(13px) saturate(180%);
+    background-color: rgba(255, 255, 255, 0.61);
+    border-radius: 8px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
+    color: black !important;
+    width: 100%;
+    height: 80px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.08);
+    padding: 0 50px;
+    z-index: 3;
+    transition: all 200ms;
+}
+.navBarFixed a{
+    font-size: 1rem;
+    font-weight: 600;
+    color: #b0d236;
+}
+
+.navBar a{
+    font-weight: 700;
+    font-size: 1.2rem;
+}
+
+.navDrawer a{
+    font-weight: 500;
+    font-size: 1.3rem;
+}
+
+.iconMenu {
+    display: flex;
+    flex: 1;
+    justify-content: flex-end;
+}
+
+
+/* ESTILOS PARA MENU BUTTON DE PRODUCTOS */
+.navBarLink{
+    font-size: 1.2rem !important;
+    font-weight: 700 !important;
+    color: #b0d236 !important;
+}
+
+.navBarFixedLink{
+    font-size: 1rem !important;
+    font-weight: 600 !important;
+    color: #b0d236 !important;
+}
+.navBarFixedLink a, .navBarLink  a {
+    font-weight: 300 !important;
+}
+
+.navBarLinkDrawer{
+    color: #4A5568 !important;
+    font-size: 1.3rem !important;
+    font-weight: 500 !important;
+    display: block;
+    width: fit-content;
+}
+
+.productList a{
+    font-weight: 300 !important;
+    font-size: 0.9rem !important;
+}
+/* ESTILOS PARA MENU BUTTON DE PRODUCTOS */
+
+@media (max-width: 1000px) {
+    .navBar a, .navBarLink a, .navBarFixedLink a{
+        font-size: 1.1rem !important;
+    }
+    .navBar, .navBarFixed{
+        padding: 20px 5%;
+        flex-direction: row-reverse;
+    }
+    .navBarFixed .iconMenu{
+        flex: 3;
+    }
+}
+
+@media (max-width: 760px) {
+    .navBar, .navBarFixed{
+        padding: 20px 5%;
+    }
+    .navBar, .navBarFixed{
+        flex-direction: row-reverse;
+    }
+    .navBarFixed .iconMenu{
+        flex: 3;
+    }
+}
+

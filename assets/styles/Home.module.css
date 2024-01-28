@@ -1,0 +1,50 @@
+.divider{
+  border: 3px solid #dcea8c !important;
+  border-radius: 5px;
+  margin: 5px 0 5px 0;
+}
+
+.navBarInitPosition{
+  position: absolute;
+  top: 0;
+  background-color: transparent;
+  height: 180px;
+}
+
+.title{
+  color: 'white' !important;
+  font-weight: 700;
+}
+
+.container{
+  margin-left: 5%;
+  margin-top: 70px;
+}
+
+/* ESTILOS SECCION CLIENTES */
+/* styles.css (por ejemplo) */
+.parallaxContainer{
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  top: 0;
+  z-index: -3;
+}
+/* ESTILOS SECCION CLIENTES */
+
+
+@media only screen and (min-width: 992px)  {
+  .container{
+      width:500px
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .container{
+      width:92%;
+      position: relative;
+      top: -80px;
+      margin-top: 0;
+  }
+}

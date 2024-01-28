@@ -1,0 +1,62 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# local env files
+.env*.local
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+#firebase ????????????
+
+pnpm-lock.yaml
+acm-venezuela-firebase-adminsdk-fxiu2-af5de6f970.json
+pnpm-lock.yaml
+
+todo
+key.txt
+
+oft-delete-data.js
+oft-initial-data.js
+vet-initial-data.js
+med-initial-data.js
+oto-initial-data.js
+oft-subcategory-data.js
+oft-json-categories-data.js
+oft-json-data.js
+vet-json-categories-data.js
+vet-json-data.js
+oto-json-categories-data.js
+oto-json-data.js
+med-json-categories-data.js
+med-json-data.js
+info-json-data.js
+/data
