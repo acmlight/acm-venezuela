@@ -26,7 +26,6 @@ const Contacto = ({ pages }) => {
     try {
       await sendContactForm({
         ...data,
-        token,
       });
       toast({
         title: "¡ Mensaje enviado !",
