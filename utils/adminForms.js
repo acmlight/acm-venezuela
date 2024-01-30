@@ -18,6 +18,7 @@ import {
 import { removeAccents } from "./removeAccents";
 import { removeSpaces } from "./removeSpaces";
 import { getIdFromLink } from "./getIdFromLink";
+import { generateImgId } from "./generateImgId";
 
 const genericToastMsg = (msg) => {
   if (msg) {
@@ -44,11 +45,14 @@ export const submitBanners = async (
 ) => {
   const img = data.img[0];
   const imgphone = data.imgphone[0];
+const imgId = generateImgId();
   try {
     await updateBanners(id, {
       ...data,
-      img: img ? `info/banners/${img.name}` : prevImgPath,
-      imgphone: imgphone ? `info/banners/${imgphone.name}` : prevImgPhonePath,
+      img: img ? `info/banners/${imgId}${img.name}` : prevImgPath,
+      imgphone: imgphone
+        ? `info/banners/${imgId}${imgphone.name}`
+        : prevImgPhonePath,
       imgFile: img,
       imgphoneFile: imgphone,
     });
@@ -72,7 +76,8 @@ export const submitMedicalCategory = async ({
 }) => {
   const img = data.img[0];
   const portrait = data.portrait[0];
-  const portraitphone = data.portraitphone[0]
+  const portraitphone = data.portraitphone[0];
+  const imgId = generateImgId();
   try {
     if (edit) {
       await updateMedicalCategory({
@@ -81,9 +86,13 @@ export const submitMedicalCategory = async ({
         imgFile: img,
         portraitFile: portrait,
         portraitphoneFile: portraitphone,
-        img: img ? `info/pages/${img.name}` : imgPath,
-        portrait: portrait ? `info/pages/${portrait.name}` : portraitPath,
-        portraitphone: portraitphone ? `info/pages/${portraitphone.name}` : portraitphonePath,
+        img: img ? `info/pages/${imgId}${img.name}` : imgPath,
+        portrait: portrait
+          ? `info/pages/${imgId}${portrait.name}`
+          : portraitPath,
+        portraitphone: portraitphone
+          ? `info/pages/${imgId}${portraitphone.name}`
+          : portraitphonePath,
         order: data.order ? data.order : 99,
       });
       enableFields();
@@ -95,8 +104,8 @@ export const submitMedicalCategory = async ({
         id: newId,
         imgFile: img,
         portraitFile: portrait,
-        img: `info/pages/${img.name}`,
-        portrait: `info/pages/${portrait.name}`,
+        img: `info/pages/${imgId}${img.name}`,
+        portrait: `info/pages/${imgId}${portrait.name}`,
       });
 
       onClose();
@@ -109,10 +118,11 @@ export const submitMedicalCategory = async ({
 
 export const submitNews = async ({ data, enableFields, imagePath, toast }) => {
   const img = data.image[0];
+const imgId = generateImgId();
   try {
     await updateNews({
       id: data.id,
-      img: img ? `info/pages/${img.name}` : imagePath,
+      img: img ? `info/pages/${imgId}${img.name}` : imagePath,
       imgFile: img,
       link: data.link,
       title: data.title,
@@ -136,8 +146,9 @@ export const submitTestimonials = async ({
   prevPortraitPath,
 }) => {
   const portrait = data.portrait[0];
+const imgId = generateImgId();
   const portraitPath = portrait
-    ? `info/testimonials/${portrait.name}`
+    ? `info/testimonials/${imgId}${portrait.name}`
     : prevPortraitPath;
 
   try {
@@ -154,7 +165,7 @@ export const submitTestimonials = async ({
       await createTestimony({
         id,
         link: data.link,
-        portrait: `info/testimonials/${portrait.name}`,
+        portrait: `info/testimonials/${imgId}${portrait.name}`,
         portraitFile: portrait,
       });
       onClose();
@@ -168,7 +179,8 @@ export const submitTestimonials = async ({
 
 export const submitBrand = async ({ data, toast, onClose }) => {
   const img = data.img[0];
-  const imgPath = `info/brand/${img.name}`;
+  const imgId = generateImgId()
+  const imgPath = `info/brand/${imgId}${img.name}`;
   const newId = removeAccents(removeSpaces(data.title.toLowerCase()));
   try {
     await createBrand({
@@ -236,12 +248,13 @@ export const submitSubcategories = async ({
   toast,
 }) => {
   const img = data.img[0];
+const imgId = generateImgId()
   try {
     if (edit) {
       await updateSubcategory(
         {
           id: data.id,
-          img: img ? `products/subcategory/${img.name}` : data.imgPath,
+          img: img ? `products/subcategory/${imgId}${img.name}` : data.imgPath,
           imgFile: img,
           title: data.title,
           category: data.category,
@@ -257,7 +270,7 @@ export const submitSubcategories = async ({
         {
           id: newId,
           title,
-          img: `products/subcategory/${img.name}`,
+          img: `products/subcategory/${imgId}${img.name}`,
           category: data.category,
         },
         catalog,
@@ -278,7 +291,7 @@ export const submitSubcategories = async ({
 export const submitAddProduct = async (data, toast, reset) => {
   const datasheetFile = data.datasheet[0];
   const secondarydatasheetFile = data.secondarydatasheet[0];
-
+const imgId = generateImgId()
   try {
     await addProduct(
       {
@@ -293,9 +306,11 @@ export const submitAddProduct = async (data, toast, reset) => {
         description: data.description,
         details: data.details,
         tecnical: data.tecnical,
-        datasheet: datasheetFile ? `prueba/${datasheetFile.name}` : "",
+        datasheet: datasheetFile
+          ? `products/${imgId}${datasheetFile.name}`
+          : "",
         secondarydatasheet: secondarydatasheetFile
-          ? `prueba/${secondarydatasheetFile.name}`
+          ? `products/${imgId}${secondarydatasheetFile.name}`
           : "",
       },
       datasheetFile,
@@ -321,7 +336,7 @@ export const submitAddProduct = async (data, toast, reset) => {
 export const submitEditProduct = async (data, toast, reset) => {
   const datasheetFile = data.datasheet[0];
   const secondarydatasheetFile = data.secondarydatasheet[0];
-
+const imgId = generateImgId()
   try {
     await updateProduct(
       {
@@ -337,9 +352,9 @@ export const submitEditProduct = async (data, toast, reset) => {
         description: data.description,
         details: data.details,
         tecnical: data.tecnical,
-        datasheet: datasheetFile ? `prueba/${datasheetFile.name}` : "",
+        datasheet: datasheetFile ? `products/${imgId}${datasheetFile.name}` : "",
         secondarydatasheet: secondarydatasheetFile
-          ? `prueba/${secondarydatasheetFile.name}`
+          ? `products/${imgId}${secondarydatasheetFile.name}`
           : "",
       },
       datasheetFile,

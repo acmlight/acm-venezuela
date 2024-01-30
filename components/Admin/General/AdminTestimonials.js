@@ -38,7 +38,7 @@ const AdminTestimonials = ({
   const handleDelete = async () => {
     try {
       setLoader(true);
-      await deleteTestimony(id);
+      await deleteTestimony(id, portraitPath);
       toast({
         description: "Testimonio eliminado correctamente",
         status: "success",

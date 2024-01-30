@@ -28,7 +28,7 @@ const NewsCard = ({ item }) => {
           <Box w="100%" h="70%" position="relative" mb={4}>
             <Image
               fill
-              src={item.image}
+              src={item.image ? item.image : '/imagenotfound.png'}
               alt="Green double couch with wooden legs"
               style={{ objectFit: "cover", borderRadius: "8px" }}
             />

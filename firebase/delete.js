@@ -4,12 +4,12 @@ import { deleteImage } from "../utils/deleteImage";
 
 const testimonyRef = doc(db, "info", "testimonials");
 
-export const deleteTestimony = async (id) => {
+export const deleteTestimony = async (id, portraitPath) => {
   try {
     await updateDoc(testimonyRef, {
       [id]: deleteField(),
     });
-    //await deleteImage(portraitPath)
+    await deleteImage(portraitPath)
   } catch (e) {
     throw new Error(e);
   }

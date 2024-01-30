@@ -10,13 +10,13 @@ import { getAnalytics, isSupported } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBbHxusLngd5fUKfExxxqlwKLG0L1pc6EM",
-  authDomain: "acm-venezuela.firebaseapp.com",
-  projectId: "acm-venezuela",
-  storageBucket: "acm-venezuela.appspot.com",
-  messagingSenderId: "793618920788",
-  appId: "1:793618920788:web:22c9e58b938b1eec3544c1",
-  measurementId: "G-C6RNGT3XYT"
+  apiKey: "AIzaSyDn9nk8P13AArMi8zzzG4bYOsyQlvDDOwA",
+  authDomain: "acm-venezuela-3ef23.firebaseapp.com",
+  projectId: "acm-venezuela-3ef23",
+  storageBucket: "acm-venezuela-3ef23.appspot.com",
+  messagingSenderId: "77502892655",
+  appId: "1:77502892655:web:f2b18c671ad9508af59b9a",
+  measurementId: "G-B56GC5ENZ0"
 };
 
 // Initialize Firebase

@@ -69,7 +69,7 @@ export async function handleNewsData() {
   const newsWithImages = await Promise.all(
     news.map(async (item) => {
       const imgURL = await setImagesURLs(item.img);
-      const date = item.uploadedAt.toDate();
+      const date = item.uploadedAt ? item.uploadedAt.toDate() : null;
       return {
         ...item,
         image: imgURL,
@@ -88,7 +88,7 @@ export async function handleTestimonialsData() {
   const testimonialsWithImages = await Promise.all(
     testimonials.map(async (item) => {
       const imgURL = await setImagesURLs(item.portrait);
-      const date = item.uploadedAt.toDate();
+      const date = item.uploadedAt ? item.uploadedAt.toDate() : null;
       return {
         ...item,
         uploadedAt: date,
