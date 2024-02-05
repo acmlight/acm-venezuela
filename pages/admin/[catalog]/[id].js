@@ -31,6 +31,7 @@ const EditProduct = ({
   categories,
   department,
   subcategory,
+  brands
 }) => {
   const toast = useToast();
 
@@ -46,6 +47,7 @@ const EditProduct = ({
       category: product.category,
       subcategory: product.subcategory,
       department: product.department,
+      brand: product.brand,
       web: product.web,
       videos: product.videos,
       images: product.images,
@@ -70,7 +72,6 @@ const EditProduct = ({
           </Heading>
           <Flex direction="column" gap={8} mb={12}>
             <Attribute title="Especialización" content={page.title} />
-            <Attribute title="Fabricante" content={productBrand.title} />
             {product.country && (
               <Attribute title="Origen" country={product.country} />
             )}
@@ -81,7 +82,6 @@ const EditProduct = ({
               submitEditProduct(
                 {
                   ...data,
-                  brand: productBrand.id,
                   country: product.country,
                   catalog: page.id,
                   id: product.id
@@ -146,6 +146,16 @@ const EditProduct = ({
                   />
                 </GridItem>
               )}
+              <GridItem colSpan={2}>
+                <AdminSelector
+                  isRequired
+                  register={register}
+                  label="Seleccione fabricante"
+                  id="brand"
+                  error={errors.brand}
+                  selectors={brands}
+                />
+              </GridItem>
               <GridItem colSpan={2}>
                 <AdminInputGroup
                   register={register}
@@ -243,7 +253,11 @@ const EditProduct = ({
                   type="submit"
                   w="100%"
                 >
-                  {isSubmitting ? <Spinner color="white" size="xs" /> : <>Guardar</>}
+                  {isSubmitting ? (
+                    <Spinner color="white" size="xs" />
+                  ) : (
+                    <>Guardar</>
+                  )}
                 </Button>
               </GridItem>
             </Grid>
@@ -329,6 +343,7 @@ export async function getServerSideProps({ params }) {
         images: productImages,
       },
       productBrand,
+      brands,
       categories,
       department: department ? department : null,
       subcategory: selectorSubcategory,

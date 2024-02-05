@@ -78,7 +78,8 @@ const handler = async (req, res) => {
                           <ul>
                             <li><b>Número de teléfono: </b> ${data.phone}</li>
                             <li><b>Correo de contacto:</b> ${data.mail}</li>
-                            <li><b> Ciudad: </b> ${data.city}</li>
+                            <li><b>Ciudad:</b> ${data.city}</li>
+                            <li><b>Municipio:</b> ${data.municipio}</li>
                           </ul>
                           <br>
                           <b>Equipos:</b>

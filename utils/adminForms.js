@@ -303,9 +303,9 @@ const imgId = generateImgId()
         videos: data.videos,
         web: data.web,
         title: data.title,
-        description: data.description,
-        details: data.details,
-        tecnical: data.tecnical,
+        description: data.description ? data.description : '',
+        details: data.details ? data.details : '',
+        tecnical: data.tecnical ? data.tecnical : '',
         datasheet: datasheetFile
           ? `products/${imgId}${datasheetFile.name}`
           : "",
@@ -349,9 +349,9 @@ const imgId = generateImgId()
         videos: data.videos,
         web: data.web,
         title: data.title,
-        description: data.description,
-        details: data.details,
-        tecnical: data.tecnical,
+        description: data.description ? data.description : '',
+        details: data.details ? data.details : '',
+        tecnical: data.tecnical ? data.tecnical : '',
         datasheet: datasheetFile ? `products/${imgId}${datasheetFile.name}` : "",
         secondarydatasheet: secondarydatasheetFile
           ? `products/${imgId}${secondarydatasheetFile.name}`

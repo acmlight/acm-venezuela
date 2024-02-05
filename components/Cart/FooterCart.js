@@ -35,6 +35,7 @@ const FooterCart = ({ onSubmit, loader }) => {
           size="xs"
         />
         <Input required {...register("city")} placeholder="Ciudad" size="xs" />
+        <Input {...register("municipio")} placeholder="Municipio" size="xs" />
         <Input {...register("sweet")} placeholder="Not for you" type="hidden"/>
       </Flex>
       <Center>
