@@ -10,14 +10,14 @@ import { getAnalytics, isSupported } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyDn9nk8P13AArMi8zzzG4bYOsyQlvDDOwA",
-  authDomain: "acm-venezuela-3ef23.firebaseapp.com",
-  projectId: "acm-venezuela-3ef23",
-  storageBucket: "acm-venezuela-3ef23.appspot.com",
-  messagingSenderId: "77502892655",
-  appId: "1:77502892655:web:f2b18c671ad9508af59b9a",
-  measurementId: "G-B56GC5ENZ0"
-};
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN || "",
+  projectId: process.env.PROJECT_ID || "",
+  storageBucket: process.env.STORAGE_BUCKET || "",
+  messagingSenderId: process.env.MESSAGING_SENDER_ID || "",
+  appId: process.env.APP_ID || "",
+  measurementId: process.env.MEASUREMENT_ID || "",
+}
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
