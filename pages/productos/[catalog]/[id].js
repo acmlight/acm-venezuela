@@ -2,12 +2,10 @@ import {
   AspectRatio,
   Box,
   Container,
-  Divider,
   Flex,
   Grid,
   GridItem,
   useToast,
-  Button,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
@@ -17,9 +15,7 @@ import Layout from "../../../containers/Layout";
 import useStore from "../../../hooks/useStore";
 import { useProductStore } from "../../../state";
 import dynamic from "next/dynamic";
-import IconButton from "../../../components/IconButton";
-import { TbShoppingCartSearch } from "react-icons/tb";
-import { FaSearch } from "react-icons/fa";
+
 const DynamicProductAccord = dynamic(() =>
   import("../../../components/ProductDetail/ProductAccord")
 );
@@ -185,10 +181,12 @@ export async function getStaticProps({ params }) {
   const { handleBrandData, handlePagesData, handleProductsData } = await import(
     "../../../firebase/api"
   );
-  const pages = await handlePagesData();
+  const [pages, product, brands] = await Promise.all([
+    handlePagesData(),
+    handleProductsData(params.catalog, params.id),
+    handleBrandData(),
+  ]);
   const page = { ...pages.filter((page) => page.id === params.catalog) };
-  const product = await handleProductsData(params.catalog, params.id);
-  const brands = await handleBrandData();
   const productBrand = product
     ? brands.find((item) => item.id === product.brand)
     : null;
@@ -197,13 +195,10 @@ export async function getStaticProps({ params }) {
     props: {
       page: page["0"],
       pages,
-      // product: {
-      //   ...product,
-      //   datasheet,
-      // },
       product,
       brandId: productBrand?.id,
       brandTitle: productBrand?.title,
     },
+    revalidate: 14400, // 4 hours
   };
 }

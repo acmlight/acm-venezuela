@@ -108,5 +108,6 @@ export async function getStaticProps(ctx) {
     props: {
       pages,
     },
+    revalidate: 14400, // 4 hours
   };
 }
