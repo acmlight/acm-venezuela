@@ -66,11 +66,16 @@ export async function getStaticProps(ctx) {
     handleBannnersColorsData,
     handleBrandData,
   } = await import("../firebase/api");
-  const banners = await handleInitialInfoData();
-  const colors = await handleBannnersColorsData();
-  const pages = await handlePagesData();
-  const newsData = await handleNewsData();
-  const brand = await handleBrandData();
+  const [banners, colors, pages, newsData, brand, testimonials] =
+    await Promise.all([
+      handleInitialInfoData(),
+      handleBannnersColorsData(),
+      handlePagesData(),
+      handleNewsData(),
+      handleBrandData(),
+      handleTestimonialsData(),
+    ]);
+
   newsData.sort((a, b) => b.uploadedAt - a.uploadedAt);
   const newsWithDate = newsData.map((item) => {
     const date = formatDate(item.uploadedAt);
@@ -81,7 +86,6 @@ export async function getStaticProps(ctx) {
   });
 
   const brandImages = brand.map((item) => item.img);
-  const testimonials = await handleTestimonialsData();
   testimonials.sort((a, b) => {
     // Verificar si la propiedad uploadedAt existe en ambas instancias
     if (a.uploadedAt && b.uploadedAt) {
@@ -109,5 +113,6 @@ export async function getStaticProps(ctx) {
       brand,
       brandImages,
     },
+    revalidate: 14400, // 4 hours
   };
 }

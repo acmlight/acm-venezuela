@@ -13,7 +13,6 @@ import AnimateTitle from "../containers/AnimateTitle";
 import Layout from "../containers/Layout";
 import dynamic from "next/dynamic";
 
-
 const DynamicHeader = dynamic(() => import("../components/Header"));
 const DynamicCarousel = dynamic(() => import("../components/Carousel"));
 
@@ -169,13 +168,17 @@ export default Nosotros;
 
 export async function getStaticProps(ctx) {
   const { handlePagesData, handleBrandData } = await import("../firebase/api");
-  const pages = await handlePagesData();
-  const brand = await handleBrandData()
-  const brandImages = brand.map((item) => item.img)
+  const [pages, brand] = await Promise.all([
+    handlePagesData(),
+    handleBrandData(),
+  ]);
+
+  const brandImages = brand.map((item) => item.img);
   return {
     props: {
       pages,
-      brandImages
+      brandImages,
     },
+    revalidate: 14400, // 4 hours
   };
 }

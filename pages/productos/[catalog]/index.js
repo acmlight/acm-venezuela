@@ -110,12 +110,15 @@ export async function getStaticProps({ params }) {
     handleCategoriesData,
     handleBannnersColorsData
   } = await import("../../../firebase/api");
-  const colors = await handleBannnersColorsData();
-  const pages = await handlePagesData();
-  const brands = await handleBrandData();
+  const [colors, pages, brands, productsFromFirestore, categories] = await Promise.all([
+    handleBannnersColorsData(),
+    handlePagesData(),
+    handleBrandData(),
+    handleProductsData(params.catalog),
+    handleCategoriesData(params.catalog),
+  ]);
+
   const page = { ...pages.filter((page) => page.id === params.catalog) };
-  const productsFromFirestore = await handleProductsData(params.catalog);
-  const categories = await handleCategoriesData(params.catalog);
 
   const products = productsFromFirestore.map((item) => ({
     id: item.id,
@@ -159,5 +162,6 @@ export async function getStaticProps({ params }) {
       products,
       colors
     },
+    revalidate: 14400, // 4 hours
   };
 }

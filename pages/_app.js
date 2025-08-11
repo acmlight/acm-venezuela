@@ -3,10 +3,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 import { Montserrat } from "next/font/google";
 import { LazyMotion, domAnimation, AnimatePresence } from "framer-motion";
-import { getAnalytics, logEvent } from "firebase/analytics";
-import {analytics} from '../firebase/config'
-import { useRouter } from "next/router";
-import { useEffect } from "react";
+
 const colors = {
   brand: {
     100: "#b0d236",
@@ -28,27 +25,8 @@ const montserrat = Montserrat({
 const theme = extendTheme({ colors });
 
 function MyApp({ Component, pageProps }) {
-  const router = useRouter();
-
-
-  //Necesario para captar la navegación por cada ruta de la página para PostHog
-  useEffect(() => {
-    const handleRouteChange = () => logEvent(analytics, 'page_view',{
-      page_location: `${router.basePath}${router.asPath}`,
-      page_path: router.asPath,
-      page_title: router.asPath
-    })
-    router.events.on("routeChangeComplete", handleRouteChange);
-
-    return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
-    };
-
-  //eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [router.events]);
 
   return (
-    // <PostHogProvider client={posthog}>
       <AnimatePresence mode="wait">
         <ChakraProvider theme={theme}>
           <main className={montserrat.className}>
@@ -58,7 +36,6 @@ function MyApp({ Component, pageProps }) {
           </main>
         </ChakraProvider>
       </AnimatePresence>
-    // </PostHogProvider>
   );
 }
 
