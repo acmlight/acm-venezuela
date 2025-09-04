@@ -57,7 +57,7 @@ export default function Home({
   );
 }
 
-export async function getStaticProps(ctx) {
+export async function getServerSideProps(ctx) {
   const {
     handleInitialInfoData,
     handlePagesData,
@@ -113,6 +113,5 @@ export async function getStaticProps(ctx) {
       brand,
       brandImages,
     },
-    revalidate: 14400, // 4 hours
   };
 }

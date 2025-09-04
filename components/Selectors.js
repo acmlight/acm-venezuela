@@ -5,7 +5,7 @@ const Selectors = ({
   options,
   register,
   name,
-  onFocus,
+  onFocus = () => {},
   label,
 }) => {
   return (
