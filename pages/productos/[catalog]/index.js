@@ -88,80 +88,95 @@ const Productos = ({
 
 export default Productos;
 
-export async function getStaticPaths() {
-  const { handlePagesData } = await import("../../../firebase/api");
-  const pages = await handlePagesData();
+export async function getServerSideProps({ params, req, res }) {
+  try {
+    const {
+      handleBrandData,
+      handlePagesData,
+      handleProductsData,
+      handleCategoriesData,
+      handleBannnersColorsData
+    } = await import("../../../firebase/api");
 
-  const paths = pages.map((page) => ({
-    params: { catalog: page.id },
-  }));
+    const [colors, pages, brands, productsFromFirestore, categories] = await Promise.all([
+      handleBannnersColorsData(),
+      handlePagesData(),
+      handleBrandData(),
+      handleProductsData(params.catalog),
+      handleCategoriesData(params.catalog),
+    ]);
 
-  return {
-    paths,
-    fallback: false,
-  };
-}
+    // Verificar si las páginas existen
+    if (!pages || pages.length === 0) {
+      return {
+        notFound: true,
+      };
+    }
 
-export async function getStaticProps({ params }) {
-  const {
-    handleBrandData,
-    handlePagesData,
-    handleProductsData,
-    handleCategoriesData,
-    handleBannnersColorsData
-  } = await import("../../../firebase/api");
-  const [colors, pages, brands, productsFromFirestore, categories] = await Promise.all([
-    handleBannnersColorsData(),
-    handlePagesData(),
-    handleBrandData(),
-    handleProductsData(params.catalog),
-    handleCategoriesData(params.catalog),
-  ]);
+    const page = { ...pages.filter((page) => page.id === params.catalog) };
 
-  const page = { ...pages.filter((page) => page.id === params.catalog) };
+    // Verificar si la página del catálogo específico existe
+    if (!page["0"]) {
+      return {
+        notFound: true,
+      };
+    }
 
-  const products = productsFromFirestore.map((item) => ({
-    id: item.id,
-    title: item.title,
-    brand: item.brand,
-    department: item.department,
-    subcategory: item.subcategory,
-    category: item.category,
-    portrait: item.portrait,
-  }));
+    const products = productsFromFirestore.map((item) => ({
+      id: item.id,
+      title: item.title,
+      brand: item.brand,
+      department: item.department,
+      subcategory: item.subcategory,
+      category: item.category,
+      portrait: item.portrait,
+    }));
 
-  let subcategoryWithImages = [];
-  if (categories && categories.subcategory) {
-    subcategoryWithImages = await Promise.all(
-      categories.subcategory.map(async (item) => {
-        if (item.img) {
-          const imgURL = await setImagesURLs(item.img);
+    let subcategoryWithImages = [];
+    if (categories && categories.subcategory) {
+      subcategoryWithImages = await Promise.all(
+        categories.subcategory.map(async (item) => {
+          if (item.img) {
+            const imgURL = await setImagesURLs(item.img);
+            return {
+              ...item,
+              img: imgURL,
+            };
+          }
           return {
             ...item,
-            img: imgURL,
+            img: "",
           };
-        }
-        return {
-          ...item,
-          img: "",
-        };
-      })
-    );
-  }
+        })
+      );
+    }
 
-  return {
-    props: {
-      subcategory: subcategoryWithImages,
-      department:
-        categories && categories.department ? categories.department : null,
-      brands,
-      categories:
-        categories && categories.categories ? categories.categories : null,
-      page: page["0"],
-      pages,
-      products,
-      colors
-    },
-    revalidate: 14400, // 4 hours
-  };
+    // Configurar cache headers (opcional)
+    if (res) {
+      res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=3600, stale-while-revalidate=86400'
+      );
+    }
+
+    return {
+      props: {
+        subcategory: subcategoryWithImages,
+        department:
+          categories && categories.department ? categories.department : null,
+        brands,
+        categories:
+          categories && categories.categories ? categories.categories : null,
+        page: page["0"],
+        pages,
+        products,
+        colors
+      },
+    };
+  } catch (error) {
+    console.error('Error in getServerSideProps:', error);
+    return {
+      notFound: true,
+    };
+  }
 }

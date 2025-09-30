@@ -156,49 +156,66 @@ const Equipment = ({ pages, page, product, brandId, brandTitle }) => {
 
 export default Equipment;
 
-export async function getStaticPaths() {
-  const { getAllProducts, handlePagesData } = await import(
-    "../../../firebase/api"
-  );
-  const pages = await handlePagesData();
-  const paths = [];
+export async function getServerSideProps({ params, req, res }) {
+  try {
+    const { handleBrandData, handlePagesData, handleProductsData } = await import(
+      "../../../firebase/api"
+    );
 
-  // Recorremos los catálogos (oftalmologia,otorrino,etc) y sus productos para crear los objetos de ruta
-  for (const page of pages) {
-    const products = await getAllProducts(page.id);
+    const [pages, product, brands] = await Promise.all([
+      handlePagesData(),
+      handleProductsData(params.catalog, params.id),
+      handleBrandData(),
+    ]);
 
-    products.forEach((producto) => {
-      paths.push({ params: { catalog: page.id, id: producto.id } });
-    });
+    // Verificar si el producto existe
+    if (!product) {
+      return {
+        notFound: true,
+      };
+    }
+
+    // Verificar si las páginas existen
+    if (!pages || pages.length === 0) {
+      return {
+        notFound: true,
+      };
+    }
+
+    const page = { ...pages.filter((page) => page.id === params.catalog) };
+
+    // Verificar si la página del catálogo existe
+    if (!page["0"]) {
+      return {
+        notFound: true,
+      };
+    }
+
+    const productBrand = product
+      ? brands.find((item) => item.id === product.brand)
+      : null;
+
+    // Configurar cache headers (opcional)
+    if (res) {
+      res.setHeader(
+        'Cache-Control',
+        'public, s-maxage=3600, stale-while-revalidate=86400'
+      );
+    }
+
+    return {
+      props: {
+        page: page["0"],
+        pages,
+        product,
+        brandId: productBrand?.id,
+        brandTitle: productBrand?.title,
+      },
+    };
+  } catch (error) {
+    console.error('Error in getServerSideProps:', error);
+    return {
+      notFound: true,
+    };
   }
-  return {
-    paths,
-    fallback: false,
-  };
-}
-
-export async function getStaticProps({ params }) {
-  const { handleBrandData, handlePagesData, handleProductsData } = await import(
-    "../../../firebase/api"
-  );
-  const [pages, product, brands] = await Promise.all([
-    handlePagesData(),
-    handleProductsData(params.catalog, params.id),
-    handleBrandData(),
-  ]);
-  const page = { ...pages.filter((page) => page.id === params.catalog) };
-  const productBrand = product
-    ? brands.find((item) => item.id === product.brand)
-    : null;
-
-  return {
-    props: {
-      page: page["0"],
-      pages,
-      product,
-      brandId: productBrand?.id,
-      brandTitle: productBrand?.title,
-    },
-    revalidate: 14400, // 4 hours
-  };
 }
