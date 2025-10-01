@@ -65,6 +65,7 @@ const Products = ({ pages }) => {
                       fill
                       src={page.img}
                       alt={page.title}
+                      unoptimized
                     />
                   </Box>
 

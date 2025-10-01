@@ -18,6 +18,7 @@ const Header = ({ image = '/about.jpg', title, color = 'white' }) => {
         style={{ objectFit: "cover", zIndex: -1 }}
         placeholder="blur"
         blurDataURL={headerBlur}
+        unoptimized
       />
       <Heading
         as="h1"

@@ -22,6 +22,7 @@ const TestimonialBox = ({ portrait, link, sizes }) => (
   <a href={link} target="_blank">
     <Box position="relative" w={sizes.w} h={sizes.h}>
       <Image
+        unoptimized
         src={portrait}
         alt="Testimonios de los clientes de ACM Venezuela"
         fill

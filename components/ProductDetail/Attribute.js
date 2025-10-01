@@ -18,6 +18,7 @@ const Attribute = ({ title, content, country }) => {
             {country.charAt(0).toUpperCase() + country.slice(1)}
           </Text>
           <Image
+            unoptimized
             src={`/paises/${country}.jpg`}
             alt="Pais del equipo"
             width={40}

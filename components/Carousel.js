@@ -47,7 +47,7 @@ const Carousel = ({images,slides = 4, size = 105, speed = 15000, autoplay = true
             <Slider {...settings}>
                 {images.map((image, index) => (
                     <div key={index} >
-                        <Image  key={index} src={image} alt='ACM Venezuela' width={size} height={size}/>
+                        <Image unoptimized key={index} src={image} alt='ACM Venezuela' width={size} height={size}/>
                     </div>
 
                 ))}

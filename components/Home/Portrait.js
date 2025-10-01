@@ -18,6 +18,7 @@ const Portrait = ({
         style={{ zIndex: -1, objectFit: "cover" }}
         placeholder="blur"
         blurDataURL={blurData}
+        unoptimized
       />
     </Hide>
   );

@@ -25,6 +25,7 @@ const ItemCart = ({ item }) => {
       position="relative"
     >
       <Image
+        unoptimized
         style={{ objectFit: "cover" }}
         width={100}
         height={100}

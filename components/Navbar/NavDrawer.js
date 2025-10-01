@@ -26,6 +26,7 @@ const NavDrawer = ({ isOpen, onClose, btnRef, pages, openCart, children }) => {
         <DrawerCloseButton />
         <DrawerHeader>
           <Image
+            unoptimized
             width={80}
             height={90}
             alt="ACM Logo"

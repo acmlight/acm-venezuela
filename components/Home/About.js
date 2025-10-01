@@ -100,6 +100,7 @@ const About = ({brand}) => {
               h={{ base: 200, md: 350 }}
             >
               <Image
+              unoptimized
                 src="/acmteam.jpg"
                 alt="Equipo de ACM Venezuela"
                 fill

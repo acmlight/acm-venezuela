@@ -43,6 +43,7 @@ const Footer = () => {
                 visual global.
               </Text>
               <Image
+              unoptimized
                 width={100}
                 height={90}
                 alt="ACM Logo Blanco"

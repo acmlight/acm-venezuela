@@ -51,6 +51,7 @@ const NavBar = ({ atTop, pages, openCart }) => {
         <Box flex={[1, 1, 1, 2]}>
           <Center>
             <Image
+              unoptimized
               width={atTop ? 170 : 100}
               height={90}
               alt="ACM Logo"

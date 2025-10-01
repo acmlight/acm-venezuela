@@ -43,6 +43,7 @@ const NavBar = ({ pages, auth }) => {
       >
         <Center>
           <Image
+            unoptimized
             width={90}
             height={80}
             alt="ACM Logo Blanco"

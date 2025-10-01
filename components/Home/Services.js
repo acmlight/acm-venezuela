@@ -41,6 +41,7 @@ const ImageServices = ({ img, title, children }) => {
           }}
           placeholder="blur"
           blurDataURL={serviciosBlur}
+          unoptimized
         />
         <Flex
           position="absolute"

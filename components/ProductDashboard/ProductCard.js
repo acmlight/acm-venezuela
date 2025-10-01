@@ -8,6 +8,7 @@ const ProductCard = ({ title, img = "/imagenotfound.png", brand, isProduct = fal
       <CardBody p={0}>
         <Stack position="relative" w="100%" h={{ base: "150px", md: "180px" }}>
           <Image
+          unoptimized
             src={img}
             alt={title}
             fill
@@ -19,6 +20,7 @@ const ProductCard = ({ title, img = "/imagenotfound.png", brand, isProduct = fal
           {brand && (
             <Box position="absolute" bottom="10px" right="10px" w={7} h={7}>
               <Image
+              unoptimized
                 src={brand.img}
                 alt={`Logo ${brand.title} partner de ACM`}
                 fill

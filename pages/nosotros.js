@@ -91,6 +91,7 @@ const Nosotros = ({ pages, brandImages }) => {
                     alt="Historia de ACM Venezuela"
                     width={180}
                     height={180}
+                    unoptimized
                   />
                 </Center>
               </GridItem>
@@ -138,6 +139,7 @@ const Nosotros = ({ pages, brandImages }) => {
                 alt="valores de ACM Venezuela"
                 width={320}
                 height={320}
+                unoptimized
               />
             </Flex>
           </GridItem>

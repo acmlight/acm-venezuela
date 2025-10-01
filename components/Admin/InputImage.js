@@ -55,6 +55,7 @@ const InputImage = ({
       {(img || imageUpload) && (
         <Box w="50px" h="50px" position="relative" mr={3}>
           <Image
+          unoptimized
             style={{
               objectFit: "contain",
               backgroundPosition: "center",

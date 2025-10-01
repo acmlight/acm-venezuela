@@ -61,6 +61,7 @@ const ProductAssets = ({
           }}
         >
           <Image
+          unoptimized
             src={images[currentIndex]}
             alt={title}
             fill

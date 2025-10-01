@@ -27,6 +27,7 @@ const NewsCard = ({ item }) => {
         <CardBody p="10px">
           <Box w="100%" h="70%" position="relative" mb={4}>
             <Image
+              unoptimized
               fill
               src={item.image ? item.image : '/imagenotfound.png'}
               alt="Green double couch with wooden legs"

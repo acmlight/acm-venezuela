@@ -71,6 +71,7 @@ const BrandCategories = ({ title, id, img }) => {
               Logo:{" "}
             </Text>
             <Image
+              unoptimized
               src={img}
               alt="Partner de ACM Venezuela"
               width={35}

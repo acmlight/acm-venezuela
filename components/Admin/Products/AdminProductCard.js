@@ -65,6 +65,7 @@ const AdminProductCard = ({
         <CardBody p={0} position="relative">
           <Stack position="relative" w="100%" h={{ base: "80px", md: "120px" }}>
             <Image
+            unoptimized
               src={img}
               alt={title}
               sizes="(max-width: 768px) 100vw, 33vw"
@@ -77,6 +78,7 @@ const AdminProductCard = ({
             {brand && (
               <Box position="absolute" bottom="10px" right="10px" w={7} h={7}>
                 <Image
+                unoptimized
                   src={brand.img}
                   alt="Logo Fabricante partner de ACM"
                   fill

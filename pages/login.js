@@ -104,6 +104,7 @@ const Login = () => {
           height="100%"
         >
           <Image
+            unoptimized
             width={200}
             height={90}
             alt="ACM Logo Blanco"

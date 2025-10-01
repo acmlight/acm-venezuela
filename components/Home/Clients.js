@@ -40,6 +40,7 @@ const Clients = () => {
           {clientesImages.map((item, index) => (
             <GridItem key={index}>
               <Image
+                unoptimized
                 src={item}
                 alt="Cliente ACM Venezuela"
                 width={150}
@@ -52,6 +53,7 @@ const Clients = () => {
       <Box height="600px" position="relative" clipPath="inset(0 0 0 0)">
         <Show below="md">
           <Image
+            unoptimized
             fill
             style={{ objectFit: "cover", zIndex: -1 }}
             src="/clientesmobile.jpg"
@@ -64,6 +66,7 @@ const Clients = () => {
           <div className={styles.parallaxContainer}>
             <Image
               fill
+              unoptimized 
               style={{ objectFit: "cover" }}
               src="/clientes.jpg"
               alt="Clientes ACM"
