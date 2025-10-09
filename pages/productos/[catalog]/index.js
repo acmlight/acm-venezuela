@@ -7,6 +7,8 @@ import { setImagesURLs } from "../../../utils/setImagesURLs";
 import submitSearch from "../../../utils/submitSearch";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
+import SEOHead from "../../../components/SEOHead";
+import { generateMedicalEquipmentListSchema, generateBreadcrumbSchema } from "../../../utils/structuredData";
 
 const DynamicHeader = dynamic(() => import("../../../components/Header"));
 
@@ -35,54 +37,79 @@ const Productos = ({
     }
   };
 
+  // SEO optimization
+  const productListSchema = generateMedicalEquipmentListSchema(products, page.title);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Inicio", url: "https://www.acm-venezuela.com" },
+    { name: "Productos", url: "https://www.acm-venezuela.com/productos" },
+    { name: page.title, url: `https://www.acm-venezuela.com/productos/${page.id}` }
+  ]);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [productListSchema, breadcrumbSchema]
+  };
+
+  const seoTitle = `Equipos Médicos de ${page.title} | ACM Venezuela`;
+  const seoDescription = `Catálogo completo de equipos médicos para ${page.title}. Tecnología de punta, marcas reconocidas mundialmente. ${products.length}+ productos disponibles. Solicita tu cotización.`;
+  const keywords = `equipos ${page.title} venezuela, instrumental ${page.title}, dispositivos médicos ${page.title}, ${page.title} caracas, ACM Venezuela`;
+
   //En productDashboard agregamos un key para decirle a React que debe re-renderizars cuando nextjs cambia entre páginas, de manera que
   //no haya problemas recuperando el estado del dashboard desde el sessionstorage
   return (
-    <Layout
-      atTop={false}
-      pages={pages}
-      title={`ACM Venezuela - Productos de ${page.title}`}
-      description={`Productos de ACM Venezuela. Se ofrece una gran variedad de equipos médicos en el área de ${page.title}`}
-    >
-      <Hide above="md">
-        <DynamicHeader image={page.portraitphone} title={page.title} color={colors.secondary} />
-      </Hide>
-      <Hide below="md">
-        <DynamicHeader image={page.portrait} title={page.title} />
-      </Hide>
-
-      <Container
-        minHeight="650px"
-        maxW={{ base: "100%", md: "70%" }}
-        mt="120px"
-        pb="90px"
+    <>
+      <SEOHead
+        title={seoTitle}
+        description={seoDescription}
+        canonical={`/productos/${page.id}`}
+        ogImage={page.portrait || "/about.jpg"}
+        keywords={keywords}
+        structuredData={structuredData}
+      />
+      <Layout
+        atTop={false}
+        pages={pages}
       >
-        <Flex gap={20} direction={{ base: "column", md: "row" }}>
-          <Box flex={1}>
-            <AdvancedSearch
-              key={router.asPath}
-              department={department}
-              brand={brands}
-              onSubmit={onSubmit}
-            />
-          </Box>
-          <Box flex={3}>
-            <ProductDashboard
-              key={router.asPath}
-              search={search}
-              setSearch={setSearch}
-              products={products}
-              categories={categories}
-              subcategory={subcategory}
-              page={page}
-              brand={brands}
-              disabled={disabled}
-              setDisabled={setDisabled}
-            />
-          </Box>
-        </Flex>
-      </Container>
-    </Layout>
+        <Hide above="md">
+          <DynamicHeader image={page.portraitphone} title={page.title} color={colors.secondary} />
+        </Hide>
+        <Hide below="md">
+          <DynamicHeader image={page.portrait} title={page.title} />
+        </Hide>
+
+        <Container
+          minHeight="650px"
+          maxW={{ base: "100%", md: "70%" }}
+          mt="120px"
+          pb="90px"
+        >
+          <Flex gap={20} direction={{ base: "column", md: "row" }}>
+            <Box flex={1}>
+              <AdvancedSearch
+                key={router.asPath}
+                department={department}
+                brand={brands}
+                onSubmit={onSubmit}
+              />
+            </Box>
+            <Box flex={3}>
+              <ProductDashboard
+                key={router.asPath}
+                search={search}
+                setSearch={setSearch}
+                products={products}
+                categories={categories}
+                subcategory={subcategory}
+                page={page}
+                brand={brands}
+                disabled={disabled}
+                setDisabled={setDisabled}
+              />
+            </Box>
+          </Flex>
+        </Container>
+      </Layout>
+    </>
   );
 };
 

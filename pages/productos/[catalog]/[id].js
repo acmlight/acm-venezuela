@@ -15,6 +15,8 @@ import Layout from "../../../containers/Layout";
 import useStore from "../../../hooks/useStore";
 import { useProductStore } from "../../../state";
 import dynamic from "next/dynamic";
+import SEOHead from "../../../components/SEOHead";
+import { generateProductSchema, generateBreadcrumbSchema } from "../../../utils/structuredData";
 
 const DynamicProductAccord = dynamic(() =>
   import("../../../components/ProductDetail/ProductAccord")
@@ -72,85 +74,115 @@ const Equipment = ({ pages, page, product, brandId, brandTitle }) => {
     router.push(`/productos/${page.id}`);
   };
 
+  // SEO optimization
+  const productSchema = generateProductSchema(product, brandTitle, page.title);
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    { name: "Inicio", url: "https://www.acm-venezuela.com" },
+    { name: "Productos", url: "https://www.acm-venezuela.com/productos" },
+    { name: page.title, url: `https://www.acm-venezuela.com/productos/${page.id}` },
+    { name: product.title, url: `https://www.acm-venezuela.com/productos/${page.id}/${product.id}` }
+  ]);
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [productSchema, breadcrumbSchema]
+  };
+
+  const seoTitle = `${product.title} | ${page.title} | ACM Venezuela`;
+  const seoDescription = product.description 
+    ? `${product.description.substring(0, 155)}...` 
+    : `Equipo médico ${product.title} de ${brandTitle || 'alta calidad'} para ${page.title}. Distribuidor autorizado en Venezuela. Solicita cotización.`;
+  
+  const keywords = `${product.title}, ${page.title}, ${brandTitle || ''}, equipos médicos venezuela, ${product.category || ''}, ${product.subcategory || ''}`;
+
   return (
-    <Layout
-      atTop={false}
-      pages={pages}
-      title={`ACM Venezuela - Equipo ${product.title}`}
-      description={`Productos de ACM Venezuela. Se ofrece una gran variedad de equipos médicos en el área de ${page.title}`}
-    >
-      <DynamicHeader image={page.portrait} title={product.title} />
-      <Container maxW={{ base: "95%", md: "75%" }} mt="120px" pb="90px">
-        <Flex direction={{ base: "column", md: "row" }}>
-          <Description
-            category={product.category}
-            subcategory={product.subcategory}
-            title={product.title}
-            brandTitle={brandTitle}
-            department={product.department}
-            description={product.description}
-            country={product.country}
-          />
-          <Box flex={1}>
-            <DynamicProductAssets
-              images={product.images ? product.images : ["/imagenotfound.png"]}
+    <>
+      <SEOHead
+        title={seoTitle}
+        description={seoDescription}
+        canonical={`/productos/${page.id}/${product.id}`}
+        ogImage={product.images?.[0] || "/imagenotfound.png"}
+        ogType="product"
+        keywords={keywords}
+        structuredData={structuredData}
+      />
+      <Layout
+        atTop={false}
+        pages={pages}
+      >
+        <DynamicHeader image={page.portrait} title={product.title} />
+        <Container maxW={{ base: "95%", md: "75%" }} mt="120px" pb="90px">
+          <Flex direction={{ base: "column", md: "row" }}>
+            <Description
+              category={product.category}
+              subcategory={product.subcategory}
               title={product.title}
-              datasheet={product?.datasheet}
-              secondarydatasheet={product?.secondarydatasheet}
-              addProduct={addProduct}
-              goBack={goBack}
+              brandTitle={brandTitle}
+              department={product.department}
+              description={product.description}
+              country={product.country}
             />
-          </Box>
-        </Flex>
+            <Box flex={1}>
+              <DynamicProductAssets
+                images={product.images ? product.images : ["/imagenotfound.png"]}
+                title={product.title}
+                datasheet={product?.datasheet}
+                secondarydatasheet={product?.secondarydatasheet}
+                addProduct={addProduct}
+                goBack={goBack}
+              />
+            </Box>
+          </Flex>
 
-        {product.details && (
-          <DynamicProductAccord
-            divider
-            title="Detalles de producto"
-            content={product.details}
-          />
-        )}
-        {/* <ProductHtmlContent divider content={product.details} /> */}
+          {product.details && (
+            <DynamicProductAccord
+              divider
+              title="Detalles de producto"
+              content={product.details}
+            />
+          )}
+          {/* <ProductHtmlContent divider content={product.details} /> */}
 
-        {product.tecnical && (
-          <DynamicProductAccord
-            title="Características Técnicas"
-            content={product.tecnical}
-          />
-        )}
+          {product.tecnical && (
+            <DynamicProductAccord
+              title="Características Técnicas"
+              content={product.tecnical}
+            />
+          )}
 
-        {product.videos && product.videos.length > 0 && (
-          <DynamicProductAccord title="Videos">
-            <Grid
-              templateColumns="repeat(2, 1fr)"
-              gap={{ base: 3, md: 6 }}
-              p={4}
-            >
-              {product.videos.map((video, index) => (
-                <GridItem key={`${product.title} - ${index}`}>
-                  <AspectRatio maxW="420px" ratio={1.5}>
-                    <iframe
-                      key={index}
-                      src={video}
-                      title={product.title}
-                      loading="lazy"
-                      sandbox="allow-same-origin allow-scripts"
-                      allowFullScreen
-                    ></iframe>
-                  </AspectRatio>
-                </GridItem>
-              ))}
-            </Grid>
+          {product.videos && product.videos.length > 0 && (
+            <DynamicProductAccord title="Videos">
+              <Grid
+                templateColumns="repeat(2, 1fr)"
+                gap={{ base: 3, md: 6 }}
+                p={4}
+              >
+                {product.videos.map((video, index) => (
+                  <GridItem key={`${product.title} - ${index}`}>
+                    <AspectRatio maxW="420px" ratio={1.5}>
+                      <iframe
+                        key={index}
+                        src={video}
+                        title={product.title}
+                        loading="lazy"
+                        sandbox="allow-same-origin allow-scripts"
+                        allowFullScreen
+                      ></iframe>
+                    </AspectRatio>
+                  </GridItem>
+                ))}
+              </Grid>
+            </DynamicProductAccord>
+          )}
+
+          <DynamicProductAccord title="Equipos visitados anteriormente">
+            <DynamicProductHistory />
           </DynamicProductAccord>
-        )}
 
-        <DynamicProductAccord title="Equipos visitados anteriormente">
-          <DynamicProductHistory />
-        </DynamicProductAccord>
-
-        <ProductFooter web={product.web} title={product.title} />
-      </Container>
-    </Layout>
+          <ProductFooter web={product.web} title={product.title} />
+        </Container>
+      </Layout>
+    </>
   );
 };
 

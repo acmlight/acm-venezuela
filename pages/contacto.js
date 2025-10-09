@@ -8,6 +8,9 @@ import ContactMap from "../components/Contacto/ContactMap";
 import Layout from "../containers/Layout";
 import { sendContactForm } from "../utils/fetchMailApi";
 import dynamic from "next/dynamic";
+import SEOHead from "../components/SEOHead";
+import { generateLocalBusinessSchema } from "../utils/structuredData";
+
 const DynamicHeader = dynamic(() => import("../components/Header"));
 const DynamicContactForm = dynamic(() => import("../components/Contacto/ContactForm"))
 const DynamicContactCard = dynamic(() => import("../components/Contacto/ContactCard"))
@@ -45,55 +48,68 @@ const Contacto = ({ pages }) => {
       });
     }
   };
+
+  const localBusinessSchema = generateLocalBusinessSchema();
+  const seoTitle = "Contacto | ACM Venezuela - Equipos Médicos Oftalmológicos";
+  const seoDescription = "Contáctanos para cotizaciones de equipos médicos oftalmológicos, láseres e instrumental especializado. Atención personalizada en Caracas, Venezuela. Tel: +58 (212) 976 3608";
+  const keywords = "contacto ACM Venezuela, cotización equipos médicos, distribuidores equipos oftalmológicos venezuela, acm venezuela teléfono, equipos médicos caracas";
+
   return (
-    <Layout
-      atTop={false}
-      pages={pages}
-      title="ACM Venezuela - Contáctanos"
-      description="Contácta a ACM Venezuela para solicitar una cotización en nuestros equipos de Oftalmología, Veterinaria, Otorrinolaringología o cirugía y medicina general"
-    >
-      <DynamicHeader image="/contact.jpg" title="Contáctanos" />
-      <Container maxW={{ base: "90%", md: "70%" }} mt="120px" pb="40px">
-        <SimpleGrid
-          spacing={4}
-          templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
-        >
-          <DynamicContactCard
-            icon={<MdPhone size="3em" />}
-            text="+58 (212) 976 3608"
-            link="tel:2129763608"
-          />
-          <DynamicContactCard
-            icon={<BsFillPhoneFill size="3em" />}
-            text="+58 (424) 263 9614"
-            link="tel:+584242639614"
-          />
-          <DynamicContactCard
-            icon={<AiOutlineWhatsApp size="3em" />}
-            text="+58 (424) 263 9613"
-            link="https://api.whatsapp.com/send?phone=584242639613"
-          />
-          <DynamicContactCard
-            icon={<BiLogoGmail size="3em" />}
-            text="info@acm-venezuela.com"
-            link="mailto:info@acm-venezuela.com"
-          />
-          <DynamicContactCard
-            icon={<MdLocationOn size="3em" />}
-            text="Terrazas de Club Hípico, Caracas - Venezuela"
-            link="https://goo.gl/maps/rASaKBCJqZaZ5qi67"
-          />
-          <DynamicContactCard
-            icon={<MdOutlineCalendarMonth size="3em" />}
-            text="9:00 am - 5:00 pm de Lunes a Viernes"
-          />
-        </SimpleGrid>
-        <Flex gap={8} mt="40px" flexDirection={{ base: "column", md: "row" }}>
-          <DynamicContactForm onSubmit={onSubmit} loader={loader} />
-          <ContactMap />
-        </Flex>
-      </Container>
-    </Layout>
+    <>
+      <SEOHead
+        title={seoTitle}
+        description={seoDescription}
+        canonical="/contacto"
+        keywords={keywords}
+        structuredData={localBusinessSchema}
+      />
+      <Layout
+        atTop={false}
+        pages={pages}
+      >
+        <DynamicHeader image="/contact.jpg" title="Contáctanos" />
+        <Container maxW={{ base: "90%", md: "70%" }} mt="120px" pb="40px">
+          <SimpleGrid
+            spacing={4}
+            templateColumns="repeat(auto-fill, minmax(250px, 1fr))"
+          >
+            <DynamicContactCard
+              icon={<MdPhone size="3em" />}
+              text="+58 (212) 976 3608"
+              link="tel:2129763608"
+            />
+            <DynamicContactCard
+              icon={<BsFillPhoneFill size="3em" />}
+              text="+58 (424) 263 9614"
+              link="tel:+584242639614"
+            />
+            <DynamicContactCard
+              icon={<AiOutlineWhatsApp size="3em" />}
+              text="+58 (424) 263 9613"
+              link="https://api.whatsapp.com/send?phone=584242639613"
+            />
+            <DynamicContactCard
+              icon={<BiLogoGmail size="3em" />}
+              text="info@acm-venezuela.com"
+              link="mailto:info@acm-venezuela.com"
+            />
+            <DynamicContactCard
+              icon={<MdLocationOn size="3em" />}
+              text="Terrazas de Club Hípico, Caracas - Venezuela"
+              link="https://goo.gl/maps/rASaKBCJqZaZ5qi67"
+            />
+            <DynamicContactCard
+              icon={<MdOutlineCalendarMonth size="3em" />}
+              text="9:00 am - 5:00 pm de Lunes a Viernes"
+            />
+          </SimpleGrid>
+          <Flex gap={8} mt="40px" flexDirection={{ base: "column", md: "row" }}>
+            <DynamicContactForm onSubmit={onSubmit} loader={loader} />
+            <ContactMap />
+          </Flex>
+        </Container>
+      </Layout>
+    </>
   );
 };
 

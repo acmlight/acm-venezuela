@@ -7,6 +7,8 @@ import Start from "../components/Home/Start";
 import Layout from "../containers/Layout";
 import dynamic from "next/dynamic";
 import formatDate from "../utils/formatDate";
+import SEOHead from "../components/SEOHead";
+import { generateOrganizationSchema, generateLocalBusinessSchema } from "../utils/structuredData";
 
 const DynamicTestimonials = dynamic(
   () => import("../components/Home/Testimonials"),
@@ -30,14 +32,31 @@ export default function Home({
   const ref = useRef(null);
   const isInView = useInView(ref);
 
+  const organizationSchema = generateOrganizationSchema();
+  const localBusinessSchema = generateLocalBusinessSchema();
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [organizationSchema, localBusinessSchema]
+  };
+
+  const seoTitle = "ACM Venezuela | Equipos Médicos Oftalmológicos y Láseres | Caracas";
+  const seoDescription = "Distribuidor líder de equipos oftalmológicos, láseres e insumos médicos en Venezuela. Más de 26 años de experiencia en oftalmología, otorrinolaringología, cirugía, veterinaria y odontología. Tecnología de punta.";
+  const keywords = "equipos médicos venezuela, equipos oftalmológicos caracas, láseres médicos venezuela, instrumental oftalmología, cirugía ocular venezuela, ACM Venezuela, equipos otorrinolaringología, equipos veterinaria médica";
+
   return (
     <>
+      <SEOHead
+        title={seoTitle}
+        description={seoDescription}
+        canonical="/"
+        keywords={keywords}
+        structuredData={structuredData}
+      />
       <div id="top" ref={ref} className={styles.navBarInitPosition}></div>
       <Layout
         atTop={isInView}
         pages={pages}
-        title="ACM Venezuela - Inicio"
-        description="ACM Venezuela es una empresa con más de 20 años de experiencia al servicio, comercialización y distribución de equipos, láseres e insumos Oftalmológicos con repercusión en Otorrinolaringología y Cirugía."
       >
         <Start data={banners} colors={colors} />
         <About brand={brandImages} />

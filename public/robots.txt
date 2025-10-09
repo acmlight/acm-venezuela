@@ -1,4 +1,12 @@
-
-# Block all crawlers for /admin
+# ACM Venezuela - Robots.txt
 User-agent: *
+Allow: /
 Disallow: /admin
+Disallow: /api/
+Disallow: /login
+
+# Sitemap
+Sitemap: https://www.acm-venezuela.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

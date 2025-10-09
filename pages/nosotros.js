@@ -12,6 +12,8 @@ import { partnersImages } from "../assets/carouselImages";
 import AnimateTitle from "../containers/AnimateTitle";
 import Layout from "../containers/Layout";
 import dynamic from "next/dynamic";
+import SEOHead from "../components/SEOHead";
+import { generateOrganizationSchema } from "../utils/structuredData";
 
 const DynamicHeader = dynamic(() => import("../components/Header"));
 const DynamicCarousel = dynamic(() => import("../components/Carousel"));
@@ -43,14 +45,26 @@ const Nosotros = ({ pages, brandImages }) => {
         "Se crea el Grupo ACM, con el propósito de cubrir las necesidades de los clientes en demanda de más y mejores servicios",
     },
   ];
+
+  const organizationSchema = generateOrganizationSchema();
+  const seoTitle = "Nosotros | ACM Venezuela - Más de 26 Años en Equipos Médicos";
+  const seoDescription = "Conozca ACM Venezuela C.A., líder en distribución de equipos oftalmológicos, láseres e insumos médicos desde 2006. Más de 26 años de experiencia al servicio de la medicina en Venezuela. Historia, misión y valores.";
+  const keywords = "acm venezuela historia, empresa equipos médicos venezuela, distribuidores oftalmología venezuela, acm group, corporación optotechnik";
+
   return (
-    <Layout
-      atTop={false}
-      pages={pages}
-      title="ACM Venezuela - Nosotros"
-      description="Conoce más acerca de ACM Venezuela"
-    >
-      <DynamicHeader image="/about.jpg" title="Sobre nosotros" />
+    <>
+      <SEOHead
+        title={seoTitle}
+        description={seoDescription}
+        canonical="/nosotros"
+        keywords={keywords}
+        structuredData={organizationSchema}
+      />
+      <Layout
+        atTop={false}
+        pages={pages}
+      >
+        <DynamicHeader image="/about.jpg" title="Sobre nosotros" />
       <Container maxW={{ base: "90%", md: "70%" }} mt="120px" pb="40px">
         <Heading
           as="h1"
@@ -163,6 +177,7 @@ const Nosotros = ({ pages, brandImages }) => {
         </Grid>
       </Container>
     </Layout>
+    </>
   );
 };
 

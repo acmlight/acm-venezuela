@@ -16,19 +16,13 @@ const DynamicCart = dynamic(() => import("../components/Cart"),{
   loading: () => null
 })
 
-const Layout = ({ children, title, description, atTop, pages }) => {
+const Layout = ({ children, atTop, pages }) => {
   const router = useRouter();
   const { isOpen, onOpen, onClose } = useDisclosure();
 
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={description} />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-        {/* <meta name="robots" content="noindex"/> */}
-      </Head>
       <DynamicCart isOpen={isOpen} onClose={onClose} />
       <DynamicNavBar atTop={atTop} pages={pages} openCart={onOpen} />
       <m.div
