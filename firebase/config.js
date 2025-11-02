@@ -21,8 +21,20 @@ const firebaseConfig = {
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
-export const auth = getAuth(app)
-export const db = getFirestore(app)
-export const analytics = isSupported().then(yes => yes ? getAnalytics(app) : null);
+export const auth = getAuth(app);
+export const db = getFirestore(app);
+
+// Firebase Analytics - solo inicializar en el cliente
+let analyticsInstance = null;
+if (typeof window !== "undefined") {
+  isSupported().then((supported) => {
+    if (supported) {
+      analyticsInstance = getAnalytics(app);
+    }
+  });
+}
+
+export const analytics = analyticsInstance;
+
 //Firebase Storage
-export const storage = getStorage(app)
+export const storage = getStorage(app);

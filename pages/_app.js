@@ -3,6 +3,9 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { extendTheme } from "@chakra-ui/react";
 import { Montserrat } from "next/font/google";
 import { LazyMotion, domAnimation, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
+import * as gtag from "../lib/gtag";
 
 const colors = {
   brand: {
@@ -25,6 +28,19 @@ const montserrat = Montserrat({
 const theme = extendTheme({ colors });
 
 function MyApp({ Component, pageProps }) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      gtag.pageview(url);
+    };
+    
+    router.events.on("routeChangeComplete", handleRouteChange);
+    
+    return () => {
+      router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, [router.events]);
 
   return (
       <AnimatePresence mode="wait">
