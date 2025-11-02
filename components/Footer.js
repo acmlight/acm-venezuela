@@ -85,8 +85,8 @@ const Footer = () => {
               Oficina Principal: Terrazas de Club Hípico, Caracas - Venezuela
             </address>
             <a href="tel:+584242639614"> +58 (424) 263 9614 </a>
-            <a href="tel:+582129763608"> +58 (212) 976 3608 </a>
-            <a href="mailto:info@acm-venezuela.com">info@acm-venezuela.com</a>
+            <a href="tel:+582129763608"> +58 (212) 977 3020 </a>
+            <a href="mailto:info@acm-venezuela.com">marketing@acmlight.com</a>
             <Flex
               alignItems="center"
               justifyContent="space-between"

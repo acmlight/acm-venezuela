@@ -75,8 +75,8 @@ const Contacto = ({ pages }) => {
           >
             <DynamicContactCard
               icon={<MdPhone size="3em" />}
-              text="+58 (212) 976 3608"
-              link="tel:2129763608"
+              text="+58 (212) 977 3020"
+              link="tel:2129773020"
             />
             <DynamicContactCard
               icon={<BsFillPhoneFill size="3em" />}
@@ -90,8 +90,8 @@ const Contacto = ({ pages }) => {
             />
             <DynamicContactCard
               icon={<BiLogoGmail size="3em" />}
-              text="info@acm-venezuela.com"
-              link="mailto:info@acm-venezuela.com"
+              text="marketing@acmlight.com"
+              link="mailto:marketing@acmlight.com"
             />
             <DynamicContactCard
               icon={<MdLocationOn size="3em" />}

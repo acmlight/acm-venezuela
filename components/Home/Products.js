@@ -39,8 +39,8 @@ const Products = ({ pages }) => {
             fontWeight="300"
             marginBottom={{ base: "25px", md: "50px" }}
           >
-            ACM Venezuela le garantiza una completa y correcta asesoría en
-            cualquiera de los productos y servicios que ofrecemos.
+            ACM Venezuela garantiza asesoría especializada en cada uno de
+            nuestros equipos oftalmológicos, láseres y soluciones médicas
           </Heading>
         </Flex>
         <Grid
@@ -51,7 +51,13 @@ const Products = ({ pages }) => {
             <GridItem key={index}>
               <Link href={`/productos/${page.id}`}>
                 <Flex alignItems="center" direction="column" gap={5}>
-                  <Box w="150px" h="150px" shadow='lg' position="relative" borderRadius='50%'>
+                  <Box
+                    w="150px"
+                    h="150px"
+                    shadow="lg"
+                    position="relative"
+                    borderRadius="50%"
+                  >
                     <Image
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       style={{

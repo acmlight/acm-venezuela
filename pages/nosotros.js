@@ -22,34 +22,37 @@ const Nosotros = ({ pages, brandImages }) => {
   const nosotros = [
     {
       img: "/nosotros/optotechnik.jpg",
-      title: "Corporacion Optotechnik: Octubre de 2006.",
+      title: "Corporación Optotechnik – Octubre 2006:",
       description:
-        "Luego de la experiencia adquirida por más de 10 años en oftalmología, neurocirugía y otorrinolaringología, los socios fundadores deciden incursionar en el área de oftalmología de Venezuela",
+        "Tras más de 10 años de experiencia en oftalmología, neurocirugía y otorrinolaringología, los socios fundadores decidieron incursionar en el mercado de oftalmología en Venezuela, sentando las bases de la futura ACM.",
     },
     {
       img: "/nosotros/acmlight.jpg",
-      title: "Inicia actividades ACM Light, LLC. Abril de 2014",
+      title: "ACM Light, LLC – Abril 2014:",
       description:
-        "Evaluando oportunidades de negocio, y siguiendo el amplio crecimiento de Venezuela se decidió abrir una nueva sede en Miami, USA para trabajar y soportar a Latin America: ACM Light, LLC.",
+        "Evaluando oportunidades de expansión y ante el crecimiento de Latinoamérica, se abrió una sede en Miami, USA, para brindar soporte estratégico y logístico a toda la región: ACM Light, LLC.",
     },
     {
       img: "/nosotros/acmve.jpg",
-      title: "Inicia actividades ACM Venezuela, CA. 2015",
+      title: "ACM Venezuela, C.A. – 2015:",
       description:
-        "Como empresa con amplia experiencia en el mercado Venezolano en oftalmología, decidió sub-especializarse, así nació: ACM Venezuela, C.A. como empresa destacada en cirugía oftalmológica y cirugía láser para cubrir el mercado nacional.",
+        "Con amplia experiencia en el mercado venezolano, nace ACM Venezuela, C.A., especializada en cirugía oftalmológica y cirugía láser, consolidándose como referente en el país.",
     },
     {
       img: "/nosotros/acmgroup.jpg",
-      title: "Grupo ACM. 2016",
+      title: "Grupo ACM – 2016:",
       description:
-        "Se crea el Grupo ACM, con el propósito de cubrir las necesidades de los clientes en demanda de más y mejores servicios",
+        "Se crea el Grupo ACM con el objetivo de ofrecer soluciones integrales y servicios avanzados, ampliando la cobertura y soporte a clientes en todas las especialidades médicas atendidas.",
     },
   ];
 
   const organizationSchema = generateOrganizationSchema();
-  const seoTitle = "Nosotros | ACM Venezuela - Más de 26 Años en Equipos Médicos";
-  const seoDescription = "Conozca ACM Venezuela C.A., líder en distribución de equipos oftalmológicos, láseres e insumos médicos desde 2006. Más de 26 años de experiencia al servicio de la medicina en Venezuela. Historia, misión y valores.";
-  const keywords = "acm venezuela historia, empresa equipos médicos venezuela, distribuidores oftalmología venezuela, acm group, corporación optotechnik";
+  const seoTitle =
+    "Nosotros | ACM Venezuela - Más de 26 Años en Equipos Médicos";
+  const seoDescription =
+    "Conozca ACM Venezuela C.A., líder en distribución de equipos oftalmológicos, láseres e insumos médicos desde 2006. Más de 26 años de experiencia al servicio de la medicina en Venezuela. Historia, misión y valores.";
+  const keywords =
+    "acm venezuela historia, empresa equipos médicos venezuela, distribuidores oftalmología venezuela, acm group, corporación optotechnik";
 
   return (
     <>
@@ -60,123 +63,123 @@ const Nosotros = ({ pages, brandImages }) => {
         keywords={keywords}
         structuredData={organizationSchema}
       />
-      <Layout
-        atTop={false}
-        pages={pages}
-      >
+      <Layout atTop={false} pages={pages}>
         <DynamicHeader image="/about.jpg" title="Sobre nosotros" />
-      <Container maxW={{ base: "90%", md: "70%" }} mt="120px" pb="40px">
-        <Heading
-          as="h1"
-          size={{ base: "xl", md: "2xl" }}
-          color="brand.300"
-          mb={{ base: "10px", md: "40px" }}
-          fontWeight="700"
-        >
-          ACM Venezuela C.A.
-        </Heading>
-        <Text
-          mb="20px"
-          fontSize={{ base: "0.8rem", md: "1rem" }}
-          fontWeight="400"
-        >
-          Somos una empresa dedicada a la comercialización y distribución de
-          equipos, láseres e insumos oftalmológicos con repercusión en otras
-          áreas como otorrinolaringología, cirugía, veterinaria y odontología.
-          Con más de 26 años involucrados en el universo del cuidado ocular, nos
-          hemos dedicado a consolidar alianzas con marcas de reconocidos
-          proveedores a nivel mundial, con el fin de ofrecer a los médicos y
-          cirujanos, los más innovadores productos con tecnología de punta.
-        </Text>
-        <Grid
-          templateColumns="repeat(5, 1fr)"
-          gap={{ base: 3, md: 6 }}
-          mb="40px"
-        >
-          {nosotros.map((item, index) => (
-            <>
-              <GridItem
-                colSpan={{ base: "2", md: "1" }}
-                key={`${index} ${item.title}`}
+        <Container maxW={{ base: "90%", md: "70%" }} mt="120px" pb="40px">
+          <Heading
+            as="h1"
+            size={{ base: "xl", md: "2xl" }}
+            color="brand.300"
+            mb={{ base: "10px", md: "40px" }}
+            fontWeight="700"
+          >
+            ACM Venezuela C.A.
+          </Heading>
+          <Text
+            mb="20px"
+            fontSize={{ base: "0.8rem", md: "1rem" }}
+            fontWeight="400"
+          >
+            En ACM Venezuela nos especializamos en la comercialización y
+            distribución de equipos oftalmológicos, láseres médicos e insumos
+            quirúrgicos, con aplicaciones también en otorrinolaringología,
+            cirugía, veterinaria y odontología. Con más de 26 años de
+            experiencia en el cuidado ocular, hemos consolidado alianzas con
+            marcas líderes a nivel mundial, ofreciendo a médicos y cirujanos
+            productos innovadores y tecnología de punta que optimizan el
+            diagnóstico y los procedimientos quirúrgicos en Venezuela y
+            Latinoamérica
+          </Text>
+          <Grid
+            templateColumns="repeat(5, 1fr)"
+            gap={{ base: 3, md: 6 }}
+            mb="40px"
+          >
+            {nosotros.map((item, index) => (
+              <>
+                <GridItem
+                  colSpan={{ base: "2", md: "1" }}
+                  key={`${index} ${item.title}`}
+                >
+                  <Center>
+                    <Image
+                      src={item.img}
+                      alt="Historia de ACM Venezuela"
+                      width={180}
+                      height={180}
+                      unoptimized
+                    />
+                  </Center>
+                </GridItem>
+                <GridItem colSpan={{ base: "3", md: "4" }}>
+                  <Heading size="md" color="brand.300" fontWeight="700" mb={4}>
+                    {item.title}
+                  </Heading>
+                  <Text fontSize={{ base: "0.8rem", md: "1rem" }}>
+                    {item.description}
+                  </Text>
+                </GridItem>
+              </>
+            ))}
+
+            <GridItem colSpan={5}>
+              <Flex
+                direction={{ base: "column", md: "row" }}
+                alignItems="center"
+                gap={10}
               >
-                <Center>
-                  <Image
-                    src={item.img}
-                    alt="Historia de ACM Venezuela"
-                    width={180}
-                    height={180}
-                    unoptimized
-                  />
-                </Center>
-              </GridItem>
-              <GridItem colSpan={{ base: "3", md: "4" }}>
-                <Heading size="md" color="brand.300" fontWeight="700" mb={4}>
-                  {item.title}
-                </Heading>
-                <Text fontSize={{ base: "0.8rem", md: "1rem" }}>
-                  {item.description}
-                </Text>
-              </GridItem>
-            </>
-          ))}
+                <AnimateTitle>
+                  <Heading
+                    as="h2"
+                    size={{ base: "xl", md: "2xl" }}
+                    color="brand.300"
+                    fontWeight="700"
+                  >
+                    Nuestros valores y propósito
+                  </Heading>
+                  <Text
+                    fontWeight="300"
+                    color="brand.300"
+                    fontSize={{ base: "1.2rem", md: "1.5rem" }}
+                    mt="20px"
+                  >
+                    En ACM Venezuela, nuestro propósito es brindar excelencia y
+                    soporte integral a médicos, cirujanos y distribuidores. Nos
+                    guiamos por la integridad y la transparencia en cada
+                    interacción, asegurando que cada consulta, requerimiento o
+                    servicio sea atendido con profesionalismo y compromiso.
+                  </Text>
+                </AnimateTitle>
 
-          <GridItem colSpan={5}>
-            <Flex
-              direction={{ base: "column", md: "row" }}
-              alignItems="center"
-              gap={10}
-            >
-              <AnimateTitle>
-                <Heading
-                  as="h2"
-                  size={{ base: "xl", md: "2xl" }}
-                  color="brand.300"
-                  fontWeight="700"
-                >
-                  Nuestros valores y propósito
-                </Heading>
-                <Text
-                  fontWeight="300"
-                  color="brand.300"
-                  fontSize={{ base: "1.2rem", md: "1.5rem" }}
-                  mt="20px"
-                >
-                  Nuestro propósito y motivación en ACM Venezuela es la
-                  magnanimidad, a través del préstamo de servicios de soporte y
-                  distribución. Integridad con nuestros distribuidores y
-                  clientes en cada situación o pregunta.
-                </Text>
-              </AnimateTitle>
-
-              <Image
-                src="/nosotros/valores.jpg"
-                alt="valores de ACM Venezuela"
-                width={320}
-                height={320}
-                unoptimized
+                <Image
+                  src="/nosotros/valores.jpg"
+                  alt="valores de ACM Venezuela"
+                  width={320}
+                  height={320}
+                  unoptimized
+                />
+              </Flex>
+            </GridItem>
+            <GridItem colSpan={5}>
+              <Heading
+                as="h2"
+                size={{ base: "xl", md: "2xl" }}
+                color="brand.300"
+                fontWeight="700"
+                mb="20px"
+              >
+                Nuestros socios comerciales
+              </Heading>
+              <DynamicCarousel
+                speed={25000}
+                slides={4}
+                size={160}
+                images={brandImages}
               />
-            </Flex>
-          </GridItem>
-          <GridItem colSpan={5}>
-            <Heading
-              as="h2"
-              size={{ base: "xl", md: "2xl" }}
-              color="brand.300"
-              fontWeight="700"
-              mb="20px"
-            >
-              Nuestros socios comerciales
-            </Heading>
-            <DynamicCarousel
-              speed={25000}
-              slides={4}
-              size={160}
-              images={brandImages}
-            />
-          </GridItem>
-        </Grid>
-      </Container>
-    </Layout>
+            </GridItem>
+          </Grid>
+        </Container>
+      </Layout>
     </>
   );
 };

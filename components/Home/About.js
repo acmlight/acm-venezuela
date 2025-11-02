@@ -18,8 +18,7 @@ const DynamicCarousel = dynamic(() => import("../Carousel"), {
   loading: () => null,
 });
 
-const About = ({brand}) => {
-
+const About = ({ brand }) => {
   return (
     <Box
       bgColor="white"
@@ -44,7 +43,9 @@ const About = ({brand}) => {
             color="brand.300"
             mb={{ base: "5px", md: "20px" }}
           >
-            <AnimateTitle>Somos calidad de servicio</AnimateTitle>
+            <AnimateTitle>
+              Innovación, precisión y calidad en equipos médicos
+            </AnimateTitle>
           </Heading>
           <Heading
             as="h3"
@@ -53,24 +54,29 @@ const About = ({brand}) => {
             fontWeight="300"
             marginBottom={{ base: "25px", md: "50px" }}
           >
-            Llevamos hasta ti las opciones de avanzada que tu práctica necesita
+            Equipos oftalmológicos, quirúrgicos y láseres diseñados para tu
+            especialidad
           </Heading>
+          <Text
+            fontSize={{ base: "0.8rem", md: "1rem" }}
+            fontWeight="400"
+            mb="8px"
+          >
+            En ACM Venezuela impulsamos la práctica médica con equipos
+            oftalmológicos, láseres médicos e insumos quirúrgicos de última
+            generación, respaldados por más de 20 años de experiencia en la
+            distribución de tecnología especializada para oftalmología,
+            otorrinolaringología, cirugía y endovascular.
+          </Text>
           <Text
             fontSize={{ base: "0.8rem", md: "1rem" }}
             fontWeight="400"
             mb="25px"
           >
-            Pasión y dedicación, es lo que nos ha caracterizado como empresa en
-            nuestros más de 20 años de experiencia al servicio, comercialización
-            y distribución de equipos, láseres e insumos Oftalmológicos con
-            repercusión en Otorrinolaringología y Cirugía. Desde nuestra
-            fundación, nos trazamos como meta fundamental, comprometernos con el
-            desafiante universo del cuidado ocular, lo que nos condujo a
-            consolidar alianzas importantes con marcas de reconocidos
-            proveedores a nivel mundial. Desde entonces, hemos ofrecido a los
-            médicos y cirujanos de la salud visual, los más innovadores
-            productos con tecnología de punta, tanto en el área de Diagnóstico
-            como Quirúrgica.
+            Somos distribuidores oficiales en Venezuela de marcas líderes a
+            nivel mundial en tecnología médica. Trabajamos para acercar la
+            innovación a cada especialista, fortaleciendo el desarrollo médico
+            en el país y mejorando la calidad de atención a los pacientes.
           </Text>
           <Hide above="md">
             <DynamicCarousel slides={3} size={75} images={brand} />
@@ -100,7 +106,7 @@ const About = ({brand}) => {
               h={{ base: 200, md: 350 }}
             >
               <Image
-              unoptimized
+                unoptimized
                 src="/acmteam.jpg"
                 alt="Equipo de ACM Venezuela"
                 fill
@@ -116,7 +122,7 @@ const About = ({brand}) => {
           </AnimateTitle>
         </Center>
       </Flex>
-      <Hide below="md" >
+      <Hide below="md">
         <Flex direction="column" p="40px 5%" height="250px">
           <Heading
             as="h2"
@@ -127,12 +133,7 @@ const About = ({brand}) => {
           >
             Nuestros socios comerciales
           </Heading>
-          <DynamicCarousel
-            speed={25000}
-            slides={5}
-            size={160}
-            images={brand}
-          />
+          <DynamicCarousel speed={25000} slides={5} size={160} images={brand} />
         </Flex>
       </Hide>
     </Box>
