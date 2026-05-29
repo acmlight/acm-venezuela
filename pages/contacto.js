@@ -80,8 +80,8 @@ const Contacto = ({ pages }) => {
             />
             <DynamicContactCard
               icon={<BsFillPhoneFill size="3em" />}
-              text="+58 (424) 263 9614"
-              link="tel:+584242639614"
+              text="+58 (422) 313 0050"
+              link="tel:+584223130050"
             />
             <DynamicContactCard
               icon={<AiOutlineWhatsApp size="3em" />}
@@ -90,8 +90,8 @@ const Contacto = ({ pages }) => {
             />
             <DynamicContactCard
               icon={<BiLogoGmail size="3em" />}
-              text="marketing@acmlight.com"
-              link="mailto:marketing@acmlight.com"
+              text="customer.service@acmlight.com"
+              link="mailto:customer.service@acmlight.com"
             />
             <DynamicContactCard
               icon={<MdLocationOn size="3em" />}
