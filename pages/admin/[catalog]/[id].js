@@ -326,10 +326,12 @@ export async function getServerSideProps({ params }) {
   const productBrand = product
     ? brands.find((item) => item.id === product.brand)
     : null;
-  const productImages = product.images.map((item, index) => ({
-    link: item,
-    path: product.imagesPath[index],
-  }));
+  const productImages = product.images
+    ? product.images.map((item, index) => ({
+        link: item,
+        path: product.imagesPath[index],
+      }))
+    : null;
 
   return {
     props: {
