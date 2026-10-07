@@ -21,6 +21,22 @@ const nextConfig = {
   generateEtags: true,
   // Add trailing slashes for better SEO
   trailingSlash: false,
+  async rewrites() {
+    return [
+      {
+        source: '/unity',
+        destination: 'https://unity-lp.netlify.app/unity',
+      },
+      {
+        source: '/unity/:path*',
+        destination: 'https://unity-lp.netlify.app/unity/:path*',
+      },
+      {
+        source: '/__forms.html',
+        destination: 'https://unity-lp.netlify.app/unity/__forms.html',
+      },
+    ]
+  },
 }
 
 module.exports = withBundleAnalyzer( nextConfig)
