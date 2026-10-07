@@ -38,3 +38,8 @@ Check out our [Next.js deployment documentation](https://nextjs.org/docs/deploym
 En /admin (conf de características generales de la página) no se toma en cuenta la adición, edición y eliminación de los fabricantes, sin embargo, quedará comentada
 en el código de ser necesario para futuras implementaciones.
 
+## UNITY en `/unity`
+
+La landing de UNITY vive en el repositorio `AA-Plus-Solutions/Unity` y está alojada en `https://unity-lp.netlify.app`. Este sitio ACM está alojado en Vercel y reenvía `/unity` y `/unity/*` al proyecto de Unity mediante los rewrites de Next.js. Unity debe estar compilada con `basePath: "/unity"` para que sus enlaces y archivos estáticos permanezcan bajo ese prefijo.
+
+El formulario de `/unity/forma` envía `POST /__forms.html` al dominio ACM. Un rewrite específico reenvía esa solicitud a `https://unity-lp.netlify.app/unity/__forms.html`, donde Netlify registra el formulario `demo-request`. Mantén **Form detection** activada en Netlify y verifica un envío real después de desplegar ambos cambios.
